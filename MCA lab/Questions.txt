@@ -1,0 +1,8 @@
+ESD 5153: Microcontroller and its application LAB 
+LAB TEST  - 1st Sessional 
+Monday, November 14, 2022  
+Write up – 20 marks  | Execution – 30 marks  | Total – 50 marks  
+
+1. Write and implement an C program for ARM microcontroller for the following: using timer 0, generate a delay of 50 milliseconds, to on and off the 4 led connected to P0.0 – P0.3, in a sequential way.  (10 Wr + 15 Ex) 
+
+2. Write and implement an C program for ARM microcontroller for the following to receive a String(not char) and display on the LCD. (10 Wr + 15 Ex) 

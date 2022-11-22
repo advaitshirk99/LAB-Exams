@@ -1,0 +1,1 @@
+Q1) WAP to read the contents from two files, merge them, and put it in a different file (each word will be reversed, and then ascending/descending order)

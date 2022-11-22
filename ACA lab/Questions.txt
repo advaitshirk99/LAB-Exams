@@ -1,0 +1,8 @@
+ESD 5151: Advanced Computer Architecture LAB
+LAB TEST  - 1st Sessional
+Monday, November 17, 2022
+Write up – 20 marks  | Execution – 30 marks  | Total – 50 marks
+
+1. Using ARM assembly, Check whether the hexadecimal number stored in 4000 0000h (32-bit number) is a palindrome or not. Example: 01011010, FFFFFFFF, 32322323 (Wr- 10, Ex-15)
+
+2. Using ARM assembly, Check whether a decimal number stored in 4000 0000h is an Armstrong number or not. example: 371(3**3+7**3+1**1), 407 (4**3+0**3+7**3) (Wr- 10, Ex-15)

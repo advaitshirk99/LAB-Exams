@@ -1,0 +1,168 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 AREA             ARMSTRONG, CODE, READONLY
+    2 00000000                 ENTRY
+    3 00000000         MAIN
+    4 00000000 E3A00101        LDR              R0, =0x40000000 ;LOAD THE ADDRE
+                                                            SS VALUE TO R0 REGI
+                                                            STER
+    5 00000004 E5901000        LDR              R1, [R0]    ;LOAD THE CONTENT T
+                                                            O REGISTER R1
+    6 00000008 E1A03001        MOV              R3, R1
+    7 0000000C E3A0A000        LDR              R10, =0     ;CLEAR THE CONTENTS
+                                                             of R10
+    8 00000010         
+    9 00000010         LOOP1
+   10 00000010 E3510009        CMP              R1, #9      ;CHECK IF THE REMAI
+                                                            NDER IS LESS THAN 9
+                                                            
+   11 00000014 DA000005        BLE              LAST_ITR    ;IF YES THEN PERFOR
+                                                            M THE CUBE OPERATIO
+                                                            N FOR THE LAST DIGI
+                                                            T
+   12 00000018 EB000008        BL               DIV         ;BRANCH WITH LINK T
+                                                            O DIV
+   13 0000001C E0080191        MUL              R8,R1,R1    ;FINDING THE CUBE
+   14 00000020 E0090198        MUL              R9,R8,R1    ;STORE THE CUBE IN 
+                                                            R9
+   15 00000024 E08AA009        ADD              R10,R10,R9  ;ADD THE VALUE AND 
+                                                            STORE IN R10
+   16 00000028 E1A01002        MOV              R1,R2       ;MOVE TO QUOTIENT B
+                                                            ACK TO R1
+   17 0000002C EAFFFFF7        B                LOOP1       ;ITERATIVE LOOP
+   18 00000030         
+   19 00000030         LAST_ITR
+   20 00000030 E0080191        MUL              R8,R1,R1    ;FINDING CUBE
+   21 00000034 E0090198        MUL              R9,R8,R1    ;STORE THE RESULT I
+                                                            N R9
+   22 00000038 E08AA009        ADD              R10,R10,R9  ;ADD THE VALUE
+   23 0000003C EA000005        B                EN          ;BRANCH TO EN TO CH
+                                                            ECK IF THE NUMBER I
+                                                            S ARMSTRONG OR NOT
+   24 00000040         DIV
+   25 00000040 E3A02000        MOV              R2,#0       ;MAKE R2 ZERO
+   26 00000044         LOOP
+   27 00000044 E3510009        CMP              R1,#9       ;CHECK IF THE REMAI
+                                                            NDER IS LESS THAN 9
+                                                            
+   28 00000048 D12FFF1E        BXLE             LR          ;SUB-ROUTINE IS USE
+                                                            D AND WILL BRANCH T
+                                                            O THE NEXT INSTRUCT
+                                                            ION IF LESS THAN 
+   29 0000004C E241100A        SUB              R1,R1,#10   ;REPEATED DIVISION 
+                                                            IS PERFORMED
+   30 00000050 E2822001        ADD              R2,R2,#1    ;INCREMENTING THE V
+                                                            ALUE TO GET THE QUO
+                                                            TIENT
+   31 00000054 EAFFFFFA        B                LOOP        ;ITERATIVELY PERFOR
+                                                            M TILL CONDITION FA
+                                                            ILS
+   32 00000058         EN
+   33 00000058 E15A0003        CMP              R10,R3      ;CHECK IF THE NUMBE
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                                                            RS ARE EQUAL 
+   34 0000005C 1A000002        BNE              STOP        ;IF NOT EQUAL THEN 
+                                                            STOP THE EXECUTION 
+                                                            
+   35 00000060 E3A05111        LDR              R5,=0x40000004 ;LOADING ADDRESS
+                                                             OF RESULT IN R5
+   36 00000064 E3A06001        MOV              R6, #1      ;IF RESULT = 1, THE
+                                                             NUMBER IS ARMSTRON
+                                                            G NUMBER
+   37 00000068 E5856000        STR              R6, [R5]
+   38 0000006C EAFFFFFE 
+                       STOP    B                STOP        ;INFINITE LOOP
+   39 00000070                 END
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\question2.d -o.\objects\question2.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_
+v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SETA 1" -
+-predefine="__UVISION_VERSION SETA 529" --list=.\listings\question2.lst questio
+n2.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+ARMSTRONG 00000000
+
+Symbol: ARMSTRONG
+   Definitions
+      At line 1 in file question2.s
+   Uses
+      None
+Comment: ARMSTRONG unused
+DIV 00000040
+
+Symbol: DIV
+   Definitions
+      At line 24 in file question2.s
+   Uses
+      At line 12 in file question2.s
+Comment: DIV used once
+EN 00000058
+
+Symbol: EN
+   Definitions
+      At line 32 in file question2.s
+   Uses
+      At line 23 in file question2.s
+Comment: EN used once
+LAST_ITR 00000030
+
+Symbol: LAST_ITR
+   Definitions
+      At line 19 in file question2.s
+   Uses
+      At line 11 in file question2.s
+Comment: LAST_ITR used once
+LOOP 00000044
+
+Symbol: LOOP
+   Definitions
+      At line 26 in file question2.s
+   Uses
+      At line 31 in file question2.s
+Comment: LOOP used once
+LOOP1 00000010
+
+Symbol: LOOP1
+   Definitions
+      At line 9 in file question2.s
+   Uses
+      At line 17 in file question2.s
+Comment: LOOP1 used once
+MAIN 00000000
+
+Symbol: MAIN
+   Definitions
+      At line 3 in file question2.s
+   Uses
+      None
+Comment: MAIN unused
+STOP 0000006C
+
+Symbol: STOP
+
+
+
+ARM Macro Assembler    Page 2 Alphabetic symbol ordering
+Relocatable symbols
+
+   Definitions
+      At line 38 in file question2.s
+   Uses
+      At line 34 in file question2.s
+      At line 38 in file question2.s
+
+8 symbols
+340 symbols in table

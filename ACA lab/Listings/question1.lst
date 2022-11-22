@@ -1,0 +1,133 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 AREA             mycode, CODE, READONLY
+    3 00000000                 ENTRY
+    4 00000000         
+    5 00000000         Main
+    6 00000000 E3A00101        LDR              R0, =0x40000000 ;Loading the ad
+                                                            dress of the number
+                                                            
+    7 00000004 E5901000        LDR              R1, [R0]    ;R1 = number (deref
+                                                            erencing the addres
+                                                            s)
+    8 00000008 E3A02111        LDR              R2, =0x40000004 ;Loading the ad
+                                                            dress of the result
+                                                            
+    9 0000000C E3A03004        MOV              R3, #4      ;Counter
+   10 00000010 E1A04001        MOV              R4, R1      ;Copying R1 into R4
+                                                            
+   11 00000014         
+   12 00000014 E201500F 
+                       UP      AND              R5, R1, #0x0F ;Storing the last
+                                                             digit (LS half-byt
+                                                            e) in R5
+   13 00000018 E204620F        AND              R6, R4, #0xF0000000 ;Storing th
+                                                            e first digit (MS h
+                                                            alf-byte) in R6
+   14 0000001C E1A06E26        LSR              R6, R6, #28
+   15 00000020 E1560005        CMP              R6, R5
+   16 00000024 1A000005        BNE              NOT_PALINDROME ;If not equal, n
+                                                            umber is not a pali
+                                                            ndrome
+   17 00000028 E3530000        CMP              R3, #0      ;If equal, the numb
+                                                            er is checked and i
+                                                            t is a palindrome
+   18 0000002C 0A000006        BEQ              PALINDROME
+   19 00000030 E2433001        SUB              R3, R3, #1  ;Decrement counter,
+                                                             if equal
+   20 00000034 E1A01221        LSR              R1, R1, #4  ;Rotate number righ
+                                                            t by 1 digit
+   21 00000038 E1A04204        LSL              R4, R4, #4  ;Rotate number left
+                                                             by 1 digit
+   22 0000003C EAFFFFF4        B                UP
+   23 00000040         
+   24 00000040         NOT_PALINDROME
+   25 00000040 E3A07001        MOV              R7, #1      ;R7=1 indicates the
+                                                             number is not a pa
+                                                            lindrome
+   26 00000044 E5827000        STR              R7,[R2]     ;Storing in the mem
+                                                            ory address
+   27 00000048 EA000001        B                STOP
+   28 0000004C         
+   29 0000004C         PALINDROME
+   30 0000004C E3A07000        MOV              R7, #0      ;R7=0 indicates the
+                                                             number is a palind
+                                                            rome
+   31 00000050 E5827000        STR              R7, [R2]    ;Storing in the mem
+                                                            ory address
+   32 00000054 EAFFFFFE 
+                       STOP    B                STOP
+   33 00000058                 END
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+Command Line: --debug --xref --diag_suppress=9931 --apcs=interwork --depend=.\o
+bjects\question1.d -o.\objects\question1.o -IC:\Keil_v5\ARM\RV31\INC -IC:\Keil_
+v5\ARM\CMSIS\Include -IC:\Keil_v5\ARM\INC\Philips --predefine="__EVAL SETA 1" -
+-predefine="__UVISION_VERSION SETA 529" --list=.\listings\question1.lst questio
+n1.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+Main 00000000
+
+Symbol: Main
+   Definitions
+      At line 5 in file question1.s
+   Uses
+      None
+Comment: Main unused
+NOT_PALINDROME 00000040
+
+Symbol: NOT_PALINDROME
+   Definitions
+      At line 24 in file question1.s
+   Uses
+      At line 16 in file question1.s
+Comment: NOT_PALINDROME used once
+PALINDROME 0000004C
+
+Symbol: PALINDROME
+   Definitions
+      At line 29 in file question1.s
+   Uses
+      At line 18 in file question1.s
+Comment: PALINDROME used once
+STOP 00000054
+
+Symbol: STOP
+   Definitions
+      At line 32 in file question1.s
+   Uses
+      At line 27 in file question1.s
+      At line 32 in file question1.s
+
+UP 00000014
+
+Symbol: UP
+   Definitions
+      At line 12 in file question1.s
+   Uses
+      At line 22 in file question1.s
+Comment: UP used once
+mycode 00000000
+
+Symbol: mycode
+   Definitions
+      At line 2 in file question1.s
+   Uses
+      None
+Comment: mycode unused
+6 symbols
+338 symbols in table
